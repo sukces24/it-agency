@@ -1,12 +1,11 @@
 /**
- * Dostawca poczty e-mail — interfejs, implementacja Nodemailer/SMTP,
+ * Dostawca poczty e-mail — interfejs, implementacja Resend,
  * walidacja konfiguracji, ponawianie prób i logowanie błędów.
  *
  * Requirements: 6.1, 6.2, 6.3, 6.5
  */
 
-import nodemailer from 'nodemailer';
-import type { Transporter } from 'nodemailer';
+import { Resend } from 'resend';
 import type { MailMessage } from './message';
 
 // ---------------------------------------------------------------------------
@@ -18,88 +17,59 @@ export interface EmailProvider {
 }
 
 // ---------------------------------------------------------------------------
-// Konfiguracja SMTP — walidacja zmiennych środowiskowych
+// Konfiguracja Resend — walidacja zmiennych środowiskowych
 // ---------------------------------------------------------------------------
 
-export interface SmtpConfig {
-  host: string;
-  port: number;
-  user: string;
-  password: string;
+export interface ResendConfig {
+  apiKey: string;
   from: string;
 }
 
-export type SmtpConfigResult =
-  | { ok: true; config: SmtpConfig }
+export type ResendConfigResult =
+  | { ok: true; config: ResendConfig }
   | { ok: false; missing: string[] };
 
-const REQUIRED_SMTP_VARS = [
-  'SMTP_HOST',
-  'SMTP_PORT',
-  'SMTP_USER',
-  'SMTP_PASSWORD',
-  'SMTP_FROM',
-] as const;
+/** Domyślny adres nadawcy, gdy RESEND_FROM nie jest ustawiony. */
+const RESEND_FROM_DEFAULT = 'Formularz kontaktowy <kontakt@sukces-24.pl>';
 
 /**
- * Odczytuje i waliduje konfigurację SMTP ze zmiennych środowiskowych.
- * Zwraca informację o brakujących/pustych zmiennych (bez logowania poświadczeń).
+ * Odczytuje i waliduje konfigurację Resend ze zmiennych środowiskowych.
+ * RESEND_API_KEY jest wymagany; RESEND_FROM jest opcjonalny (ma wartość domyślną).
+ * Zwraca informację o brakujących zmiennych (bez logowania poświadczeń).
  */
-export function getSmtpConfig(): SmtpConfigResult {
-  const missing: string[] = [];
+export function getResendConfig(): ResendConfigResult {
+  const apiKey = process.env.RESEND_API_KEY?.trim();
 
-  for (const key of REQUIRED_SMTP_VARS) {
-    const value = process.env[key];
-    if (!value || value.trim().length === 0) {
-      missing.push(key);
-    }
+  if (!apiKey) {
+    return { ok: false, missing: ['RESEND_API_KEY'] };
   }
 
-  if (missing.length > 0) {
-    return { ok: false, missing };
-  }
+  const from = process.env.RESEND_FROM?.trim() || RESEND_FROM_DEFAULT;
 
   return {
     ok: true,
     config: {
-      host: process.env.SMTP_HOST!.trim(),
-      port: parseInt(process.env.SMTP_PORT!.trim(), 10),
-      user: process.env.SMTP_USER!.trim(),
-      password: process.env.SMTP_PASSWORD!.trim(),
-      from: process.env.SMTP_FROM!.trim(),
+      apiKey,
+      from,
     },
   };
 }
 
 // ---------------------------------------------------------------------------
-// Implementacja NodemailerEmailProvider
+// Implementacja ResendEmailProvider
 // ---------------------------------------------------------------------------
 
-/** Timeout dla pojedynczej próby — ~10 s */
-const SINGLE_ATTEMPT_TIMEOUT_MS = 10_000;
-
-export class NodemailerEmailProvider implements EmailProvider {
-  private transporter: Transporter;
+export class ResendEmailProvider implements EmailProvider {
+  private resend: Resend;
   private from: string;
 
-  constructor(config: SmtpConfig) {
+  constructor(config: ResendConfig) {
     this.from = config.from;
-    this.transporter = nodemailer.createTransport({
-      host: config.host,
-      port: config.port,
-      secure: config.port === 465,
-      auth: {
-        user: config.user,
-        pass: config.password,
-      },
-      connectionTimeout: SINGLE_ATTEMPT_TIMEOUT_MS,
-      greetingTimeout: SINGLE_ATTEMPT_TIMEOUT_MS,
-      socketTimeout: SINGLE_ATTEMPT_TIMEOUT_MS,
-    });
+    this.resend = new Resend(config.apiKey);
   }
 
   async send(message: MailMessage): Promise<void> {
-    await this.transporter.sendMail({
+    const { error } = await this.resend.emails.send({
       from: this.from,
       to: message.to,
       cc: message.cc,
@@ -107,6 +77,10 @@ export class NodemailerEmailProvider implements EmailProvider {
       subject: message.subject,
       text: message.text,
     });
+
+    if (error) {
+      throw new Error(`Resend error: ${error.name} - ${error.message}`);
+    }
   }
 }
 
@@ -124,7 +98,7 @@ export interface ErrorLogEntry {
 /**
  * Loguje błąd dostawcy poczty.
  * Zawiera: znacznik czasu, typ błędu, adres docelowy.
- * NIGDY nie loguje SMTP_USER ani SMTP_PASSWORD.
+ * NIGDY nie loguje RESEND_API_KEY.
  */
 export function logProviderError(
   error: unknown,
@@ -150,15 +124,11 @@ export function logProviderError(
  * Usuwa potencjalne poświadczenia z komunikatu błędu.
  */
 function sanitizeErrorMessage(message: string): string {
-  const smtpUser = process.env.SMTP_USER;
-  const smtpPassword = process.env.SMTP_PASSWORD;
+  const apiKey = process.env.RESEND_API_KEY;
 
   let sanitized = message;
-  if (smtpUser && sanitized.includes(smtpUser)) {
-    sanitized = sanitized.replaceAll(smtpUser, '[REDACTED]');
-  }
-  if (smtpPassword && sanitized.includes(smtpPassword)) {
-    sanitized = sanitized.replaceAll(smtpPassword, '[REDACTED]');
+  if (apiKey && sanitized.includes(apiKey)) {
+    sanitized = sanitized.replaceAll(apiKey, '[REDACTED]');
   }
   return sanitized;
 }

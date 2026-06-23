@@ -224,7 +224,7 @@ export default function TestimonialsContact() {
             </div>
             <div className="info-item">
               <div className="info-icon"><SiteIcon name="phone" /></div>
-              <span>+48 123 456 789</span>
+              <span>+48 722 001 007</span>
             </div>
             <div className="info-item">
               <div className="info-icon"><SiteIcon name="clock" /></div>

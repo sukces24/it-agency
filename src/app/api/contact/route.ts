@@ -1,7 +1,7 @@
 /**
  * Route Handler — orkiestracja wysyłki wiadomości e-mail z formularza kontaktowego.
  *
- * Sekwencja: IP → rate limiter → parse JSON → honeypot → walidacja → konfiguracja SMTP → wysyłka.
+ * Sekwencja: IP → rate limiter → parse JSON → honeypot → walidacja → konfiguracja Resend → wysyłka.
  *
  * Requirements: 1.1, 2.1, 3.6, 3.7, 3.8, 4.2, 4.3, 6.1, 6.4, 6.5
  */
@@ -11,8 +11,8 @@ import { checkRateLimit } from '@/lib/contact/rate-limit';
 import { parseContactRequest } from '@/lib/contact/validation';
 import { buildMailMessage } from '@/lib/contact/message';
 import {
-  getSmtpConfig,
-  NodemailerEmailProvider,
+  getResendConfig,
+  ResendEmailProvider,
   sendWithRetry,
 } from '@/lib/contact/email-provider';
 
@@ -87,9 +87,9 @@ export async function POST(request: NextRequest): Promise<Response> {
     );
   }
 
-  // 6. Sprawdzenie konfiguracji SMTP → 500
-  const smtpResult = getSmtpConfig();
-  if (!smtpResult.ok) {
+  // 6. Sprawdzenie konfiguracji Resend → 500
+  const resendResult = getResendConfig();
+  if (!resendResult.ok) {
     return Response.json(
       { ok: false, error: 'configuration' },
       { status: 500 },
@@ -101,7 +101,7 @@ export async function POST(request: NextRequest): Promise<Response> {
 
   // 8. Wysyłka z ponowieniem → 200 / 502
   try {
-    const provider = new NodemailerEmailProvider(smtpResult.config);
+    const provider = new ResendEmailProvider(resendResult.config);
     await sendWithRetry(provider, mailMessage);
     return Response.json({ ok: true }, { status: 200 });
   } catch {

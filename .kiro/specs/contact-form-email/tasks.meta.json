@@ -1,0 +1,265 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Skonfigurować zależności, Vitest, Next.js i zmienne środowiskowe": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782194879183
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782194894203
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195038998
+      }
+    ],
+    "2.1 Zdefiniować typy i zaimplementować `parseContactRequest` w `src/lib/contact/validation.ts`": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782194879222
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195044268
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195451793
+      }
+    ],
+    "3.1 Zaimplementować `buildMailMessage` w `src/lib/contact/message.ts`": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782194879262
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195045103
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195452552
+      }
+    ],
+    "4.1 Zaimplementować rate limiter w `src/lib/contact/rate-limit.ts`": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782194879297
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195046014
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195453484
+      }
+    ],
+    "5.1 Zaimplementować interfejs `EmailProvider` i `NodemailerEmailProvider` w `src/lib/contact/email-provider.ts`": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782194879333
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195047043
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195454483
+      }
+    ],
+    "6. Checkpoint — czysta logika": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782194879369
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195473948
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195572500
+      }
+    ],
+    "7.1 Zaimplementować orkiestrację w `src/app/api/contact/route.ts`": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782194879407
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195614508
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195725955
+      }
+    ],
+    "8. Checkpoint — warstwa serwerowa": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782194879439
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195730733
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195833155
+      }
+    ],
+    "9.1 Przekształcić formularz na pola kontrolowane i dodać honeypot": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782194879489
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195047895
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195455753
+      }
+    ],
+    "9.2 Zaimplementować `handleSubmit` z wysyłką, walidacją wstępną i stanami UI": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782194879515
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195474912
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195573399
+      }
+    ],
+    "10.1 Zintegrować komponent z trasą i zweryfikować ścieżkę": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782194879539
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195731975
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195834005
+      }
+    ],
+    "11. Końcowy checkpoint": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782194879567
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195841262
+      },
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195888336
+      }
+    ],
+    "1. Konfiguracja zależności, środowiska testowego i Next.js": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195039026
+      }
+    ],
+    "2. Walidacja danych po stronie serwera": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195451833
+      }
+    ],
+    "3. Budowa treści wiadomości e-mail": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195452585
+      }
+    ],
+    "4. Ograniczanie liczby żądań (rate limiter)": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195453517
+      }
+    ],
+    "5. Dostawca poczty i ponawianie prób": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195454518
+      }
+    ],
+    "9. Modyfikacja komponentu klienckiego `TestimonialsContact`": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195573428
+      }
+    ],
+    "7. Route Handler `/api/contact`": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195725995
+      }
+    ],
+    "10. Spięcie całości i weryfikacja": [
+      {
+        "executionId": "bf4820a6-de88-4193-a31b-e5f89b0afc25",
+        "chatSessionId": "sess_868b77cf-9db5-4b71-b05e-449fb3045e34",
+        "timestamp": 1782195834067
+      }
+    ]
+  }
+}

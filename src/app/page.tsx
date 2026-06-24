@@ -1,6 +1,7 @@
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import WhyUs from '@/components/WhyUs';
+import TechStack from '@/components/TechStack';
 import Portfolio from '@/components/Portfolio';
 import CostRescue from '@/components/CostRescue';
 import HowWeWork from '@/components/HowWeWork';
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <Services />
       <WhyUs />
+      <TechStack />
       <Portfolio />
       <CostRescue />
       <HowWeWork />

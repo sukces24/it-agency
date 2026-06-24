@@ -82,6 +82,33 @@ const pl = {
       },
     ],
   },
+  techStack: {
+    heading: 'Technologie, których używamy',
+    subheading:
+      'Dobieramy sprawdzony, nowoczesny stack do każdego projektu – od frontendu, przez backend i bazy danych, po chmurę i AI.',
+    categories: [
+      {
+        title: 'Frontend',
+        items: ['Next.js', 'React', 'TypeScript', 'JavaScript', 'Tailwind CSS'],
+      },
+      {
+        title: 'Backend',
+        items: ['Node.js', 'NestJS', 'Fastify', 'Express', 'BullMQ'],
+      },
+      {
+        title: 'Bazy danych i cache',
+        items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Supabase', 'Neon'],
+      },
+      {
+        title: 'Chmura i DevOps',
+        items: ['AWS', 'Azure', 'Google Cloud'],
+      },
+      {
+        title: 'Sztuczna inteligencja',
+        items: ['OpenAI', 'Claude', 'Gemini', 'Codex'],
+      },
+    ],
+  },
   portfolio: {
     heading: 'Realizacje',
     subheading:
@@ -266,6 +293,11 @@ export type Dictionary = {
     subheading: string;
     items: readonly { title: string; desc: string }[];
   };
+  techStack: {
+    heading: string;
+    subheading: string;
+    categories: readonly { title: string; items: readonly string[] }[];
+  };
   portfolio: {
     heading: string;
     subheading: string;
@@ -389,6 +421,33 @@ const en: Dictionary = {
       {
         title: 'Lower maintenance costs',
         desc: 'We optimize infrastructure and code, so monthly hosting and service bills are genuinely lower. You pay for value, not for neglect.',
+      },
+    ],
+  },
+  techStack: {
+    heading: 'Technologies we use',
+    subheading:
+      'We pick a proven, modern stack for every project – from frontend through backend and databases to cloud and AI.',
+    categories: [
+      {
+        title: 'Frontend',
+        items: ['Next.js', 'React', 'TypeScript', 'JavaScript', 'Tailwind CSS'],
+      },
+      {
+        title: 'Backend',
+        items: ['Node.js', 'NestJS', 'Fastify', 'Express', 'BullMQ'],
+      },
+      {
+        title: 'Databases & cache',
+        items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Supabase', 'Neon'],
+      },
+      {
+        title: 'Cloud & DevOps',
+        items: ['AWS', 'Azure', 'Google Cloud'],
+      },
+      {
+        title: 'Artificial intelligence',
+        items: ['OpenAI', 'Claude', 'Gemini', 'Codex'],
       },
     ],
   },

@@ -58,34 +58,34 @@ export function parseContactRequest(input: ContactFormInput): ValidationResult {
   const companyRaw =
     typeof input.company === "string" ? input.company : "";
   if (companyRaw.length > 0) {
-    fields.company = "Nieprawidłowe żądanie.";
+    fields.company = "invalidRequest";
   }
 
   // --- Name ---
   const nameRaw = typeof input.name === "string" ? input.name.trim() : "";
   if (nameRaw.length === 0) {
-    fields.name = "Imię i nazwisko jest wymagane.";
+    fields.name = "name.required";
   } else if (nameRaw.length > 100) {
-    fields.name = "Imię i nazwisko nie może przekraczać 100 znaków.";
+    fields.name = "name.tooLong";
   }
 
   // --- Email ---
   const emailRaw = typeof input.email === "string" ? input.email.trim() : "";
   if (emailRaw.length === 0) {
-    fields.email = "Adres e-mail jest wymagany.";
+    fields.email = "email.required";
   } else if (emailRaw.length > 254) {
-    fields.email = "Adres e-mail nie może przekraczać 254 znaków.";
+    fields.email = "email.tooLong";
   } else if (!isValidEmailFormat(emailRaw)) {
-    fields.email = "Adres e-mail ma nieprawidłowy format.";
+    fields.email = "email.invalid";
   }
 
   // --- Message ---
   const messageRaw =
     typeof input.message === "string" ? input.message.trim() : "";
   if (messageRaw.length === 0) {
-    fields.message = "Opis projektu jest wymagany.";
+    fields.message = "message.required";
   } else if (messageRaw.length > 5000) {
-    fields.message = "Opis projektu nie może przekraczać 5000 znaków.";
+    fields.message = "message.tooLong";
   }
 
   // --- Phone (opcjonalny) ---
@@ -94,10 +94,9 @@ export function parseContactRequest(input: ContactFormInput): ValidationResult {
 
   if (phoneRaw.length > 0) {
     if (phoneRaw.length > 20) {
-      fields.phone = "Numer telefonu nie może przekraczać 20 znaków.";
+      fields.phone = "phone.tooLong";
     } else if (!PHONE_ALLOWED_CHARS.test(phoneRaw)) {
-      fields.phone =
-        "Numer telefonu może zawierać wyłącznie cyfry, spacje oraz znaki +, -, (, ).";
+      fields.phone = "phone.invalid";
     } else {
       phoneValue = phoneRaw;
     }

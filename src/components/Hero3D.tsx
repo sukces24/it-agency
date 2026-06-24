@@ -541,7 +541,7 @@ function Scene() {
   const intro = useRef(0);
   const pointer = useGlobalPointer();
   useFrame((state, delta) => {
-    const { clock, camera, viewport } = state;
+    const { clock, camera, viewport, size } = state;
     const s = structure.current;
     if (!s) return;
     const gp = pointer.current;
@@ -549,11 +549,16 @@ function Scene() {
     intro.current = Math.min(intro.current + delta, 1.5);
     const p = Math.min(intro.current / 1.15, 1);
     const ease = 1 - Math.pow(1 - p, 3);
-    const offsetX = Math.max(0, Math.min(viewport.width * 0.2, viewport.width / 2 - 3.4));
+    // Scale the whole structure down on smaller viewports so it never overflows.
+    const responsive = THREE.MathUtils.clamp(size.width / 1600, 0.5, 1);
+    const baseScale = (0.8 + 0.2 * ease) * responsive;
+    // Keep the structure clear of the right edge; its half-width scales with it.
+    const halfStruct = 3.9 * baseScale;
+    const offsetX = Math.max(0, Math.min(viewport.width * 0.18, viewport.width / 2 - halfStruct));
     s.position.x = offsetX;
     s.position.y = Math.sin(t * 0.6) * 0.06;
     s.position.z = -1.8 * (1 - ease);
-    s.scale.setScalar(0.8 + 0.2 * ease);
+    s.scale.setScalar(baseScale);
     const targetY = gp.x * 0.55 * ease + Math.sin(t * 0.25) * 0.05;
     const targetX = -gp.y * 0.3 * ease;
     s.rotation.y = THREE.MathUtils.lerp(s.rotation.y, targetY, 0.06);

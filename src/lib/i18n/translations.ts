@@ -82,6 +82,33 @@ const pl = {
       },
     ],
   },
+  techStack: {
+    heading: 'Technologie, których używamy',
+    subheading:
+      'Dobieramy sprawdzony, nowoczesny stack do każdego projektu – od frontendu, przez backend i bazy danych, po chmurę i AI.',
+    categories: [
+      {
+        title: 'Frontend',
+        items: ['Next.js', 'React', 'TypeScript', 'JavaScript', 'Tailwind CSS'],
+      },
+      {
+        title: 'Backend',
+        items: ['Node.js', 'NestJS', 'Fastify', 'Express', 'BullMQ'],
+      },
+      {
+        title: 'Bazy danych i cache',
+        items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Supabase', 'Neon'],
+      },
+      {
+        title: 'Chmura i DevOps',
+        items: ['AWS', 'Azure', 'Google Cloud'],
+      },
+      {
+        title: 'Sztuczna inteligencja',
+        items: ['OpenAI', 'Claude', 'Gemini', 'Codex'],
+      },
+    ],
+  },
   portfolio: {
     heading: 'Realizacje',
     subheading:
@@ -117,6 +144,11 @@ const pl = {
         description:
           'Kompleksowa obsługa obiektu noclegowego: strona informacyjna, system zarządzania rezerwacjami, pozycjonowanie SEO oraz prowadzenie social media.',
         tags: ['Strona informacyjna', 'System rezerwacji', 'SEO', 'Social media'],
+      },
+      TL: {
+        description:
+          'Strona internetowa firmy transportowej prezentująca ofertę usług i ułatwiająca kontakt oraz pozyskiwanie nowych zleceń.',
+        tags: ['Strona WWW', 'Transport'],
       },
       SN: {
         description:
@@ -261,12 +293,17 @@ export type Dictionary = {
     subheading: string;
     items: readonly { title: string; desc: string }[];
   };
+  techStack: {
+    heading: string;
+    subheading: string;
+    categories: readonly { title: string; items: readonly string[] }[];
+  };
   portfolio: {
     heading: string;
     subheading: string;
     visit: string;
     projects: Record<
-      'MN' | 'BN' | 'TS' | 'FE' | 'LT' | 'SN' | 'TK',
+      'MN' | 'BN' | 'TS' | 'FE' | 'LT' | 'SN' | 'TK' | 'TL',
       { description: string; tags: readonly string[] }
     >;
   };
@@ -387,6 +424,33 @@ const en: Dictionary = {
       },
     ],
   },
+  techStack: {
+    heading: 'Technologies we use',
+    subheading:
+      'We pick a proven, modern stack for every project – from frontend through backend and databases to cloud and AI.',
+    categories: [
+      {
+        title: 'Frontend',
+        items: ['Next.js', 'React', 'TypeScript', 'JavaScript', 'Tailwind CSS'],
+      },
+      {
+        title: 'Backend',
+        items: ['Node.js', 'NestJS', 'Fastify', 'Express', 'BullMQ'],
+      },
+      {
+        title: 'Databases & cache',
+        items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Supabase', 'Neon'],
+      },
+      {
+        title: 'Cloud & DevOps',
+        items: ['AWS', 'Azure', 'Google Cloud'],
+      },
+      {
+        title: 'Artificial intelligence',
+        items: ['OpenAI', 'Claude', 'Gemini', 'Codex'],
+      },
+    ],
+  },
   portfolio: {
     heading: 'Our work',
     subheading: "Selected projects we've built for clients in Poland and abroad.",
@@ -421,6 +485,11 @@ const en: Dictionary = {
         description:
           'End-to-end support for an accommodation venue: informational website, reservation management system, SEO and social media management.',
         tags: ['Informational site', 'Booking system', 'SEO', 'Social media'],
+      },
+      TL: {
+        description:
+          'A website for a transport company presenting its services and making it easier to get in touch and win new orders.',
+        tags: ['Website', 'Transport'],
       },
       SN: {
         description: "A modern website built individually to the client's needs.",

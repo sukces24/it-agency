@@ -56,7 +56,7 @@ export async function POST(request: NextRequest): Promise<Response> {
     body = await request.json();
   } catch {
     return Response.json(
-      { ok: false, error: 'validation', fields: { _form: 'Nieprawidłowe żądanie.' } },
+      { ok: false, error: 'validation', fields: { _form: 'invalidRequest' } },
       { status: 400 },
     );
   }
@@ -66,7 +66,7 @@ export async function POST(request: NextRequest): Promise<Response> {
   const companyValue = typeof rawBody.company === 'string' ? rawBody.company : '';
   if (companyValue.length > 0) {
     return Response.json(
-      { ok: false, error: 'validation', fields: { company: 'Nieprawidłowe żądanie.' } },
+      { ok: false, error: 'validation', fields: { company: 'invalidRequest' } },
       { status: 400 },
     );
   }

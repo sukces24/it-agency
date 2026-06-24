@@ -118,6 +118,11 @@ const pl = {
           'Kompleksowa obsługa obiektu noclegowego: strona informacyjna, system zarządzania rezerwacjami, pozycjonowanie SEO oraz prowadzenie social media.',
         tags: ['Strona informacyjna', 'System rezerwacji', 'SEO', 'Social media'],
       },
+      TL: {
+        description:
+          'Strona internetowa firmy transportowej prezentująca ofertę usług i ułatwiająca kontakt oraz pozyskiwanie nowych zleceń.',
+        tags: ['Strona WWW', 'Transport'],
+      },
       SN: {
         description:
           'Nowoczesna strona internetowa zbudowana indywidualnie pod potrzeby klienta.',
@@ -266,7 +271,7 @@ export type Dictionary = {
     subheading: string;
     visit: string;
     projects: Record<
-      'MN' | 'BN' | 'TS' | 'FE' | 'LT' | 'SN' | 'TK',
+      'MN' | 'BN' | 'TS' | 'FE' | 'LT' | 'SN' | 'TK' | 'TL',
       { description: string; tags: readonly string[] }
     >;
   };
@@ -421,6 +426,11 @@ const en: Dictionary = {
         description:
           'End-to-end support for an accommodation venue: informational website, reservation management system, SEO and social media management.',
         tags: ['Informational site', 'Booking system', 'SEO', 'Social media'],
+      },
+      TL: {
+        description:
+          'A website for a transport company presenting its services and making it easier to get in touch and win new orders.',
+        tags: ['Website', 'Transport'],
       },
       SN: {
         description: "A modern website built individually to the client's needs.",

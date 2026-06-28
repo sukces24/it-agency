@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useI18n } from '@/lib/i18n/LanguageProvider';
 
-type ProjectKey = 'MN' | 'BN' | 'TS' | 'FE' | 'LT' | 'SN' | 'TK' | 'TL';
+type ProjectKey = 'MN' | 'BN' | 'TS' | 'FE' | 'LT' | 'SN' | 'TK' | 'TL' | 'LP';
 
 type Project = {
   key: ProjectKey;
@@ -63,6 +63,13 @@ const projects: Project[] = [
     domain: 'transportlaskowski.com',
     url: 'https://www.transportlaskowski.com/',
     image: '/assets/laskowski.png',
+  },
+  {
+    key: 'LP',
+    title: 'Las Palomas 303',
+    domain: 'laspalomas303.com',
+    url: 'https://www.laspalomas303.com/',
+    image: '/assets/laspalomas.png',
   },
   {
     key: 'SN',

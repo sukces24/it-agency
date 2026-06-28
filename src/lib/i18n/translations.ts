@@ -150,6 +150,11 @@ const pl = {
           'Strona internetowa firmy transportowej prezentująca ofertę usług i ułatwiająca kontakt oraz pozyskiwanie nowych zleceń.',
         tags: ['Strona WWW', 'Transport'],
       },
+      LP: {
+        description:
+          'System wynajmu apartamentu w Meksyku z rezerwacją terminów i płatnościami online.',
+        tags: ['System rezerwacji', 'Płatności online', 'Wynajem'],
+      },
       SN: {
         description:
           'Nowoczesna strona internetowa zbudowana indywidualnie pod potrzeby klienta.',
@@ -303,7 +308,7 @@ export type Dictionary = {
     subheading: string;
     visit: string;
     projects: Record<
-      'MN' | 'BN' | 'TS' | 'FE' | 'LT' | 'SN' | 'TK' | 'TL',
+      'MN' | 'BN' | 'TS' | 'FE' | 'LT' | 'SN' | 'TK' | 'TL' | 'LP',
       { description: string; tags: readonly string[] }
     >;
   };
@@ -490,6 +495,11 @@ const en: Dictionary = {
         description:
           'A website for a transport company presenting its services and making it easier to get in touch and win new orders.',
         tags: ['Website', 'Transport'],
+      },
+      LP: {
+        description:
+          'An apartment rental system in Mexico with date booking and online payments.',
+        tags: ['Booking system', 'Online payments', 'Rentals'],
       },
       SN: {
         description: "A modern website built individually to the client's needs.",
